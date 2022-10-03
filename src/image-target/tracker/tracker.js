@@ -21,6 +21,7 @@ class Tracker {
     this.trackingDataList = trackingDataList;
     this.projectionTransform = projectionTransform;
     this.debugMode = debugMode;
+    this.dummyRun = this.dummyRun.bind(this);
 
     this.trackingKeyframeList = [];
     for (let i = 0; i < trackingDataList.length; i++) {
@@ -46,10 +47,10 @@ class Tracker {
     this.kernelCaches = {};
   }
 
-  async dummyRun(inputT) {
+  dummyRun(inputT) {
     let transform = [[1,1,1,1], [1,1,1,1], [1,1,1,1]];
     for (let targetIndex = 0; targetIndex < this.featurePointsListT.length; targetIndex++) {
-      await this.track(inputT, transform, targetIndex);
+     this.track(inputT, transform, targetIndex);
     }
   }
 
