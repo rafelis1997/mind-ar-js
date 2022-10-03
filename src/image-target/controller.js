@@ -96,7 +96,7 @@ class Controller {
 
     this.tracker = new Tracker(dimensions, trackingDataList, this.projectionTransform, this.inputWidth, this.inputHeight, this.debugMode, this.dummyRun);
 
-    console.log(this.tracker)
+    
     this.worker.postMessage({
       type: 'setup',
       inputWidth: this.inputWidth,
@@ -114,6 +114,7 @@ class Controller {
   // warm up gpu - build kernels is slow
   async dummyRun(input) {
     const inputT = await this.inputLoader.loadInput(input);
+    console.log(inputT)
     this.cropDetector.detect(inputT);
     this.tracker.dummyRun(inputT);
     inputT.dispose();
