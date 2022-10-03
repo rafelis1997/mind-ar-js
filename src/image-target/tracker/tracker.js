@@ -75,6 +75,7 @@ class Tracker {
 
     const matchingPoints = matchingPointsT.arraySync();
     const sim = simT.arraySync();
+    console.log(matchingPoints,sim);
 
     const trackingFrame = this.trackingKeyframeList[targetIndex];
     const worldCoords = [];
@@ -83,19 +84,19 @@ class Tracker {
 
     for (let i = 0; i < matchingPoints.length; i++) {
       if (sim[i] > AR2_SIM_THRESH && i < trackingFrame.points.length) {
-	goodTrack.push(i);
-	const point = computeScreenCoordiate(modelViewProjectionTransform, matchingPoints[i][0], matchingPoints[i][1]);
-	screenCoords.push(point);
-	worldCoords.push({x: trackingFrame.points[i].x / trackingFrame.scale, y: trackingFrame.points[i].y / trackingFrame.scale, z: 0});
+        goodTrack.push(i);
+        const point = computeScreenCoordiate(modelViewProjectionTransform, matchingPoints[i][0], matchingPoints[i][1]);
+        screenCoords.push(point);
+        worldCoords.push({x: trackingFrame.points[i].x / trackingFrame.scale, y: trackingFrame.points[i].y / trackingFrame.scale, z: 0});
       }
     }
 
     if (this.debugMode) {
       debugExtra = {
-	projectedImage: projectedImageT.arraySync(),
-	matchingPoints: matchingPointsT.arraySync(),
-	goodTrack,
-	trackedPoints: screenCoords
+        projectedImage: projectedImageT.arraySync(),
+        matchingPoints: matchingPointsT.arraySync(),
+        goodTrack,
+        trackedPoints: screenCoords
       }
     }
 
