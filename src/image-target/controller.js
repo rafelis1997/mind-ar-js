@@ -80,7 +80,7 @@ class Controller {
     });
   }
 
-  addImageTargetsFromBuffer(buffer) {
+  async addImageTargetsFromBuffer(buffer) {
     const compiler = new Compiler();
     const dataList = compiler.importData(buffer);
 
@@ -96,6 +96,7 @@ class Controller {
 
     this.tracker = new Tracker(dimensions, trackingDataList, this.projectionTransform, this.inputWidth, this.inputHeight, this.debugMode);
 
+    console.log(this.tracker)
     this.worker.postMessage({
       type: 'setup',
       inputWidth: this.inputWidth,

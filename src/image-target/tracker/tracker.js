@@ -46,10 +46,10 @@ class Tracker {
     this.kernelCaches = {};
   }
 
-  dummyRun(inputT) {
+  async dummyRun(inputT) {
     let transform = [[1,1,1,1], [1,1,1,1], [1,1,1,1]];
     for (let targetIndex = 0; targetIndex < this.featurePointsListT.length; targetIndex++) {
-      this.track(inputT, transform, targetIndex);
+      await this.track(inputT, transform, targetIndex);
     }
   }
 
