@@ -94,7 +94,7 @@ class Controller {
       dimensions.push([dataList[i].targetImage.width, dataList[i].targetImage.height]);
     }
 
-    this.tracker = new Tracker(dimensions, trackingDataList, this.projectionTransform, this.inputWidth, this.inputHeight, this.debugMode);
+    this.tracker = new Tracker(dimensions, trackingDataList, this.projectionTransform, this.inputWidth, this.inputHeight, this.debugMode, this.dummyRun);
 
     console.log(this.tracker)
     this.worker.postMessage({
