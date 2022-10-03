@@ -30,6 +30,7 @@ class Controller {
     this.processingVideo = false;
     this.interestedTargetIndex = -1;
     this.trackingStates = [];
+    this.dummyRun = this.dummyRun.bind(this);
 
     const near = 10;
     const far = 100000;
