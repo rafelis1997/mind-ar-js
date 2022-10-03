@@ -111,8 +111,8 @@ class Controller {
   }
 
   // warm up gpu - build kernels is slow
-  dummyRun(input) {
-    const inputT = this.inputLoader.loadInput(input);
+  async dummyRun(input) {
+    const inputT = await this.inputLoader.loadInput(input);
     this.cropDetector.detect(inputT);
     this.tracker.dummyRun(inputT);
     inputT.dispose();
