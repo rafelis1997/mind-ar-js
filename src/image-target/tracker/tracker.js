@@ -75,7 +75,6 @@ class Tracker {
 
     const matchingPoints = matchingPointsT.arraySync();
     const sim = simT.arraySync();
-    console.log(matchingPoints,sim);
 
     const trackingFrame = this.trackingKeyframeList[targetIndex];
     const worldCoords = [];
